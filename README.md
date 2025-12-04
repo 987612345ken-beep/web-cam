@@ -19,7 +19,6 @@ camera.set(cv2.CAP_PROP_FPS, 30)
 save_dir = os.path.join(os.getcwd(), "影像備份")
 os.makedirs(save_dir, exist_ok=True)
 
-
 @atexit.register
 def cleanup():
     # 確保攝影機和 VideoWriter 在程序結束時釋放
@@ -30,16 +29,9 @@ def cleanup():
     # 確保釋放 VideoWriter
     if video_writer:
         video_writer.release()
-        
-# --------------------------------------------------
-# 【FRP 自動重連函數】
-# --------------------------------------------------
-
-
 # --------------------------------------------------
 # 【Flask 路由與視訊串流】
 # --------------------------------------------------
-
 def generate_frames():
     global recording, video_writer
     while True:
